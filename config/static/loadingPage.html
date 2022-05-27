@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <title>OnDocker - Loading</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content="5" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      font-family: 'Inter', 'system-ui', sans-serif;
+      font-size: 62.5%;
+      height: 100%;
+      line-height: 1.15;
+      margin: 0;
+      min-height: 100vh;
+      width: 100%;
+    }
+    body {
+      align-items: center;
+      background-color: #ffffff;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 0;
+      min-height: 100vh;
+      padding: 10rem 0 0 0;
+      width: 100%;
+    }
+    img {
+      border: 0;
+    }
+    a {
+      background-color: transparent;
+      color: inherit;
+    }
+    a:active,
+    a:hover {
+      outline: 0;
+    }
+    .text {
+      color: #c7d0d9;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      text-align: center;
+    }
+    .header {
+      position: relative;
+    }
+    .loader {
+      border: 10px solid #f3f3f3; 
+      border-top: 10px solid #292a2b; 
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 5s linear infinite;
+    }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    .panel {
+      align-items: center;
+      background-color: #353536;
+      border-radius: 2px;
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 6rem 0 0 0;
+      max-width: 100vw;
+      padding: 3.5rem 6.2rem;
+      width: 56rem;
+    }
+    .panel>*:not(:last-child) {
+      margin: 0 0 4rem;
+    }
+    .headline {
+      color: #ffffff;
+      font-size: 3.2rem;
+      font-weight: 500;
+      line-height: 5rem;
+      margin: 0 0 1.3rem;
+      text-align: center;
+    }
+    @media (max-width: 56rem) {
+      body {
+        background-image: none;
+        padding: 0;
+      }
+      .panel {
+        margin: 0;
+        padding: 2rem;
+      }
+      .panel>*:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+      .footer {
+        margin: 2rem 0;
+        padding: 2rem;
+        position: initial;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+  </header>
+  <section class="panel">
+    <h2 class="headline" id="headline">{{ .ContainerName }} is loading...</h2>
+    <div class="loader"><div></div><div></div><div></div><div></div></div>
+    <p class="message text" id="message">Your docker container is loading. {{ .CurrentRetries }} connection retrie(s) remaining.</p>
+    <div class="support text">
+      Your instance will shutdown automatically after {{ .Timeout }} minute(s) of inactivity.
+    </div>
+  </section>
+</body>
+</html>

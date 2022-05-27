@@ -1,0 +1,21 @@
+[
+    {
+        "containerName": "wikijs",
+        "hosts": ["http://localhost:10000", "http://localhost:10000/wiki"],
+        "backend": "http://172.23.0.129:3000",
+        "maxRetries":3,
+        "inactivityTimeout": 15,
+        "sleepStartTime": "23:00",
+        "sleepStopTime": "07:00"
+    },
+    {
+        "containerName": "photoprism",
+        "helperContainers": ["photoprism_mariadb"],
+        "hosts": ["http://127.0.0.1:10000"],
+        "backend": "http://172.23.0.121:2342",
+        "maxRetries":3,
+        "inactivityTimeout": 30,
+        "sleepStartTime": "23:00",
+        "sleepStopTime": "07:00"
+    }
+]
